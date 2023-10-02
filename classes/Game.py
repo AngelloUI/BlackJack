@@ -9,7 +9,7 @@ class Game:
         [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, [1, 11]],  # hearts
         [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, [1, 11]],  # clubs
         [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, [1, 11]],  # spades
-        [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, [1, 11]]   # diamonds
+        [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, [1, 11]]  # diamonds
     ]
     list_of_used_cards = []
 
@@ -38,43 +38,13 @@ class Game:
         screen.blit(card_image, (x, y))
         pygame.display.update()
 
-    def _public_play_game(self, screen):
-        player = Player()
-        diler = Player()
-
-        diler._public_add_card(self._public_give_card())
-        self._public_show_card(screen, diler.cards[-1], False, self.x_diler_coordinate, self.y_diler_coordinate)
-        self.x_diler_coordinate += 90
-
-        diler._public_add_card(self._public_give_card())
-        self._public_show_card(screen, diler.cards[-1], True, self.x_diler_coordinate, self.y_diler_coordinate)
-        self.x_diler_coordinate += 90
-
-        player._public_add_card(self._public_give_card())
-        self._public_show_card(screen, player.cards[-1], True, self.x_player_coordinate, self.y_player_coordinate)
-        self.x_player_coordinate += 90
-
-        player._public_add_card(self._public_give_card())
-        self._public_show_card(screen, player.cards[-1], True, self.x_player_coordinate, self.y_player_coordinate)
-        self.x_player_coordinate += 90
-
-        '''
-        # Загрузка изображения кнопки
-        add_button = pygame.image.load("img/buttons/add_button.xcf")
-
-        # Определение позиции кнопки
-        add_rect = add_button.get_rect()
-        screen.blit(add_button, add_rect)
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:  # Левая кнопка мыши
-                if add_rect.collidepoint(event.pos):
-                    print("add")
-
-        '''
+    def _public_show_results(img_path):
+        window_width = 400
+        window_height = 300
+        pygame.time.delay(3000)
+        screen = pygame.display.set_mode((window_width, window_height))
+        pygame.display.set_caption("результат")
+        background_image = pygame.image.load(img_path)
+        screen.blit(background_image, (0, 0))
 
 
-        for used in self.list_of_used_cards:
-            print(used)
